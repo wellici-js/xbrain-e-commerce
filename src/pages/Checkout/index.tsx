@@ -1,25 +1,22 @@
-import React, { FC, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-// import { Container } from './styles';
-import { useDispatch } from 'react-redux';
-import { addTodo } from '../../store/actions';
+import React, { FC } from 'react';
+import { useHistory } from 'react-router-dom';
+import { Store } from '../../models';
+// import { addTodo } from '../../store/actions';
+
+import "./styles.css";
+import { useSelector } from 'react-redux';
 
 const Checkout: FC = () => {
-  const { name } = useParams();
-  const dispatch = useDispatch();
-  const [state, setState] = useState("");
-
+  const history = useHistory();
+  const state: any = useSelector<Store>(state => state.user);
   return (
-    <div>
+    <div className="card">
       <h1>Checkout</h1>
-      <div>
-        <h3>Name -> {name}</h3>
-      </div>
-      <input type="text" onBlur={(e) => setState(e.target.value)} />
-      <button onClick={() => {
-        dispatch(addTodo(state))
+      <h3>Olá {state?.name}</h3>
+      {console.log(state, "state")}
+      <button className="new-buy" onClick={() => {
+        history.push("/");
       }}>inserir</button>
-      <Link to="/products/123">products</Link>
     </div>
   );
 }

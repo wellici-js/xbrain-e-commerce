@@ -1,34 +1,33 @@
-import React, { FC } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { useSelector, useStore } from 'react-redux';
+import React, { FC, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import data from '../../assets/db/db.json';
+import Footer from '../../components/Footer';
 
-interface Store {
-  todo: [
-    {
-      id: number;
-      text: string;
-    }
-  ]
-}
+import { Product } from '../../models';
 
 const Products: FC = () => {
-  const { id } = useParams();
-  const todo: any = useSelector<Store>(state => state.todo);
-  const state = useStore().getState();
+  const [products, setProducts] = useState<Array<Product>>();
+
+  useEffect(() => {
+    setProducts(data.products);
+  }, []);
+
   return (
     <div>
-      {console.log("oi", todo, state)}
       <h1>Products</h1>
       <div>
-        <h3>Params -> {id}</h3>
-
+        <ul>
+          {
+            products?.map(product => (
+              <li key={product.id}>
+                {product.name}
+              </li>
+            ))
+          }
+        </ul>
       </div>
-      <ul>
-        {todo.map((item: any) => (
-          <li key={item.id}>{item.text}</li>
-        ))}
-      </ul>
-      <Link to="/checkout/wellici">checkout</Link>
+      <Link to="/checkout">checkout</Link>
+      <Footer />
     </div>
   );
 }

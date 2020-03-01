@@ -9,11 +9,11 @@ const Routes: FC = () => {
     <Router>
       <Switch>
 
-        <Route path="/products/:id">
+        <Route path="/" exact>
           <Product />
         </Route>
 
-        <Route path="/checkout/:name">
+        <Route path="/checkout">
           <Checkout />
         </Route>
 

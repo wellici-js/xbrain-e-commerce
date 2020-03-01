@@ -6,7 +6,14 @@ interface Action {
   }
 }
 
-const todos = (state = [], action: Action) => {
+const State = [
+  {
+    id: 1000,
+    text: 'Olá mundo'
+  }
+]
+
+const todo = (state = State, action: Action) => {
   switch (action.type) {
     case 'ADD_TODO':
       return [
@@ -21,4 +28,4 @@ const todos = (state = [], action: Action) => {
   }
 }
 
-export default todos;
+export default todo;

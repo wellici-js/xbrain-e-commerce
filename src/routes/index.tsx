@@ -1,10 +1,24 @@
 import React, { FC } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-// import { Container } from './styles';
+import Product from '../pages/Products';
+import Checkout from '../pages/Checkout';
 
 const Routes: FC = () => {
   return (
-    <div />
+    <Router>
+      <Switch>
+
+        <Route path="/products/:id">
+          <Product />
+        </Route>
+
+        <Route path="/checkout/:name">
+          <Checkout />
+        </Route>
+
+      </Switch>
+    </Router>
   );
 }
 

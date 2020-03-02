@@ -15,6 +15,7 @@ export interface Store {
 export interface User {
   name: string;
   email: string;
+  sexo: string;
 }
 
 export interface ActionUser {

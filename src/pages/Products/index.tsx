@@ -21,7 +21,8 @@ const useStyles = makeStyles((theme: Theme) =>
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      flexDirection: 'column'
+      flexDirection: 'column',
+      overflow: 'hidden'
     },
     card: {
       padding: theme.spacing(1),

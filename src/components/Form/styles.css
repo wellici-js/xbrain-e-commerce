@@ -1,3 +1,7 @@
 .form-container {
   min-width: 80%;
 }
+
+.form-fields {
+  justify-content: flex-end;
+}

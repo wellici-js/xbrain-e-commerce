@@ -12,7 +12,6 @@ const Checkout: FC = () => {
     <div className="card">
       <h1>Checkout</h1>
       <h3>Olá {state?.name}</h3>
-      {console.log(state, "state")}
       <button className="new-buy" onClick={() => {
         history.push("/");
       }}>inserir</button>

@@ -1,20 +1,29 @@
-import { Product } from '../../models';
+import { Product, User } from '../../models';
 
-export const addUser = (user: { name: string, email: string }) => ({
+export const addUser = (user: User) => ({
   type: 'ADD_USER',
   payload: {
-    name: user.name,
-    email: user.email
+    ...user
   }
 })
 
 export const addProduct = (product: Product) => ({
   type: 'ADD_PRODUCT',
   payload: {
-    id: product.id,
-    deadline: product.deadline,
-    name: product.name,
-    price: product.price,
-    in_cash_percent: product.in_cash_percent
+    ...product
+  }
+})
+
+export const removeProduct = (id: number) => ({
+  type: 'REMOVE_PRODUCT',
+  payload: {
+    id
+  }
+})
+
+export const clickProduct = (id: number) => ({
+  type: 'CLICK_PRODUC',
+  payload: {
+    id
   }
 })

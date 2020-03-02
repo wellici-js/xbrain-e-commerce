@@ -1,4 +1,4 @@
-import React, { FC, useMemo } from 'react';
+import React, { FC, useMemo, useState } from 'react';
 import {
   makeStyles,
   Card,
@@ -9,7 +9,10 @@ import {
   Button,
   Typography
 } from '@material-ui/core';
-import { Product } from '../../models';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { Product, Store } from '../../models';
+import { addProduct, removeProduct, clickProduct } from '../../store/actions';
 
 const useStyles = makeStyles({
   root: {
@@ -25,17 +28,33 @@ const useStyles = makeStyles({
   },
   actions: {
     marginBottom: 0
+  },
+  add: {
+    backgroundColor: '#019cdf',
+    width: 150,
+    height: 32,
+    textAlign: 'center',
+    alignSelf: 'center',
+    paddingTop: 5
   }
 });
 
-const CardComponent: FC<Product> = ({ name, url, price, in_cash_percent }) => {
+const CardComponent: FC<Product> = ({ name, url, price, in_cash_percent, deadline, id }) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const [clicked, setClicked] = useState(false);
+  const state: any = useSelector<Store>(state => state.product);
   const inCash = useMemo(() =>
     price - (price * (in_cash_percent / 100.0)),
     [price, in_cash_percent]);
 
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root}
+      onClick={() => {
+        dispatch(clickProduct(id))
+        setClicked(!clicked)
+      }}
+    >
       <CardActionArea>
         <CardMedia
           component="img"
@@ -52,18 +71,41 @@ const CardComponent: FC<Product> = ({ name, url, price, in_cash_percent }) => {
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
             R$ {inCash} à vista (10% de desconto)
-            {console.table([price, in_cash_percent, inCash])}
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions className={classes.actions}>
-        <Button size="small" color="primary">
-          Share
+      {
+        state.isClicked && id === state.isClicked ? (
+          <CardActions className={classes.actions}>
+            <Button size="small" color="primary"
+              onClick={() => {
+                dispatch(addProduct({
+                  name,
+                  price,
+                  deadline,
+                  id,
+                  in_cash_percent,
+                  url
+                }));
+              }}
+            >
+              +
         </Button>
-        <Button size="small" color="primary">
-          Learn More
+
+            <Typography className={classes.add}>
+              ADICIONAR
+        </Typography>
+
+            <Button size="small" color="primary"
+              onClick={() => {
+                dispatch(removeProduct(id));
+              }}
+            >
+              -
         </Button>
-      </CardActions>
+          </CardActions>
+        ) : null
+      }
     </Card>
   );
 }

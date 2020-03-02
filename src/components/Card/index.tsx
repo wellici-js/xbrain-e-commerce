@@ -1,43 +1,20 @@
 import React, { FC, useMemo, useState } from 'react';
 import {
-  makeStyles,
   Card,
   CardActionArea,
   CardActions,
   CardContent,
   CardMedia,
   Button,
-  Typography
+  Typography,
+  Icon
 } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Product, Store } from '../../models';
 import { addProduct, removeProduct, clickProduct } from '../../store/actions';
 
-const useStyles = makeStyles({
-  root: {
-    maxWidth: 300,
-    minHeight: 290
-  },
-  media: {
-    maxHeight: 120,
-    objectFit: "contain"
-  },
-  name: {
-    fontsize: 10
-  },
-  actions: {
-    marginBottom: 0
-  },
-  add: {
-    backgroundColor: '#019cdf',
-    width: 150,
-    height: 32,
-    textAlign: 'center',
-    alignSelf: 'center',
-    paddingTop: 5
-  }
-});
+import useStyles from './styles';
 
 const CardComponent: FC<Product> = ({ name, url, price, in_cash_percent, deadline, id }) => {
   const classes = useStyles();
@@ -94,7 +71,7 @@ const CardComponent: FC<Product> = ({ name, url, price, in_cash_percent, deadlin
                 }));
               }}
             >
-              +
+              <Icon style={{ color: "#546e7a"}}>add_circle</Icon>
         </Button>
 
             <Typography className={classes.add}>
@@ -106,7 +83,7 @@ const CardComponent: FC<Product> = ({ name, url, price, in_cash_percent, deadlin
                 dispatch(removeProduct(id));
               }}
             >
-              -
+              <Icon style={{ color: "#546e7a"}}>remove_circle</Icon>
         </Button>
           </CardActions>
         ) : null

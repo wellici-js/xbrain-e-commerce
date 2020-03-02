@@ -17,13 +17,12 @@ const Checkout: FC = () => {
 
   return (
     <div className="card">
-      { console.log(total) }
-      <h2>{state?.name},</h2>
+      <h2>{state?.user?.name},</h2>
       <p>Sua compora no valor
         <strong>R$ { total }</strong>
         foi finalizada com sucesso
       </p>
-      <img src={image} alt="" />
+      <img src={image} alt="checkout " />
       <button className="new-buy" onClick={() => {
         history.push("/");
         dispatch(resetCart());

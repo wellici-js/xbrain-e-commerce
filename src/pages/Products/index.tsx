@@ -4,6 +4,7 @@ import {
   createStyles,
   Theme,
   Grid,
+  Divider
 } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 
@@ -51,6 +52,7 @@ const Products: FC = () => {
       }}
     >
       <h1>Products</h1>
+      <Divider component="h1" />
       <Grid container spacing={2}>
         {
           products?.map(product => (

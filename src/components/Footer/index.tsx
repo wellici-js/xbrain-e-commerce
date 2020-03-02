@@ -1,27 +1,13 @@
-import React, { FC, useState } from 'react';
-import { useStore, useDispatch } from 'react-redux';
+import React, { FC } from 'react';
 
-import { addUser } from '../../store/actions';
+import Form from '../Form';
 
 const Footer: FC = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const store = useStore();
-  const dispatch = useDispatch();
   return (
-    <div>
-      <input type="text" onBlur={(e) => setName(e.target.value)} placeholder="name" />
-      <input type="email" onBlur={(e) => setEmail(e.target.value)} placeholder="email" />
-      <button onClick={() => {
-        dispatch(addUser({
-          name,
-          email
-        }));
-      }}>Adicionar</button>
-      <h3>Price total</h3>
-      <h3>User: </h3>
-      {console.log(store.getState(), "footer")}
-    </div>
+    <footer>
+      <h3>Dados do Cliente</h3>
+      <Form />
+    </footer>
   );
 }
 

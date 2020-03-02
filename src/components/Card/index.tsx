@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useMemo } from 'react';
 import {
   makeStyles,
   Card,
@@ -9,38 +9,54 @@ import {
   Button,
   Typography
 } from '@material-ui/core';
-// import { Container } from './styles';
+import { Product } from '../../models';
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345
+    maxWidth: 300,
+    minHeight: 290
   },
   media: {
-    height: 140
+    maxHeight: 120,
+    objectFit: "contain"
+  },
+  name: {
+    fontsize: 10
+  },
+  actions: {
+    marginBottom: 0
   }
 });
 
-const CardComponent: FC<{ name: string }> = ({ name }) => {
+const CardComponent: FC<Product> = ({ name, url, price, in_cash_percent }) => {
   const classes = useStyles();
+  const inCash = useMemo(() =>
+    price - (price * (in_cash_percent / 100.0)),
+    [price, in_cash_percent]);
+
   return (
     <Card className={classes.root}>
       <CardActionArea>
         <CardMedia
+          component="img"
           className={classes.media}
-          image="../../assets/images/produto-01.jpeg"
+          image={url}
           title={name}
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
+          <Typography gutterBottom className={classes.name}>
             {name}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-            across all continents except Antarctica
+            Em até 12x de R$100
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            R$ {inCash} à vista (10% de desconto)
+            {console.table([price, in_cash_percent, inCash])}
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
+      <CardActions className={classes.actions}>
         <Button size="small" color="primary">
           Share
         </Button>

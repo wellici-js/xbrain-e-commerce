@@ -5,56 +5,64 @@
       "name": "AirPods Apple Fones de ouvido",
       "price": 1499.00,
       "deadline": 12,
-      "in_cash_percent": 10
+      "in_cash_percent": 10,
+      "url": "https://i.imgur.com/JYSEFos.jpg"
     },
     {
       "id": 2,
       "name": "Capa de silicone para Iphone 7/8 cor Areia - rosa",
       "price": 299.00,
       "deadline": 12,
-      "in_cash_percent": 10
+      "in_cash_percent": 10,
+      "url": "https://i.imgur.com/eOl2y2w.jpg"
     },
     {
       "id": 3,
       "name": "Apple Pencil",
       "price": 729.00,
       "deadline": 12,
-      "in_cash_percent": 10
+      "in_cash_percent": 10,
+      "url": "https://i.imgur.com/csuHZr3.jpg"
     },
     {
       "id": 4,
       "name": "Magic Mouse 2 - Prateado",
       "price": 549.00,
       "deadline": 12,
-      "in_cash_percent": 10
+      "in_cash_percent": 10,
+      "url": "https://i.imgur.com/ERwb4Hk.jpg"
     },
     {
       "id": 5,
       "name": "caixa prateada de aluminio com pulseira esportiva branca",
       "price": 2899.00,
       "deadline": 12,
-      "in_cash_percent": 10
+      "in_cash_percent": 10,
+      "url": "https://i.imgur.com/CCEn2kb.jpg"
     },
     {
       "id": 6,
       "name": "Cabo lightning para USB (1m)",
       "price": 149.00,
       "deadline": 12,
-      "in_cash_percent": 10
+      "in_cash_percent": 10,
+      "url": "https://i.imgur.com/UT2X2ms.jpg"
     },
     {
       "id": 7,
       "name": "Smart keyboard para IPad Pro 12,9 polegadas - inglês (EUA)",
       "price": 1099.00,
       "deadline": 12,
-      "in_cash_percent": 10
+      "in_cash_percent": 10,
+      "url": "https://i.imgur.com/1cmZohG.jpg"
     },
     {
       "id": 8,
       "name": "Carregador USB de 5W Apple",
       "price": 729,
       "deadline": 12,
-      "in_cash_percent": 10
+      "in_cash_percent": 10,
+      "url": "https://i.imgur.com/6IvqWD9.jpg"
     }
   ]
 }

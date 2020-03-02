@@ -4,6 +4,7 @@ export interface Product {
   id: number;
   deadline: number;
   in_cash_percent: number;
+  url: string;
 }
 
 export interface Store {

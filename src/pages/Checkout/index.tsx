@@ -1,10 +1,9 @@
 import React, { FC } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Store } from '../../models';
-// import { addTodo } from '../../store/actions';
-
-import "./styles.css";
 import { useSelector } from 'react-redux';
+
+import { Store } from '../../models';
+import "./styles.css";
 
 const Checkout: FC = () => {
   const history = useHistory();

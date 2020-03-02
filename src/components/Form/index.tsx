@@ -12,6 +12,8 @@ import {
   makeStyles,
 } from '@material-ui/core';
 
+import { useHistory } from 'react-router-dom';
+
 import "./styles.css";
 
 const BootstrapInput = withStyles((theme: Theme) =>
@@ -64,6 +66,7 @@ const Form: FC = () => {
   const [email, setEmail] = useState("");
   const [sexo, setSexo] = useState("");
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
@@ -72,6 +75,7 @@ const Form: FC = () => {
       email,
       sexo
     }));
+    history.push("/checkout");
   }
 
   return (
@@ -104,7 +108,7 @@ const Form: FC = () => {
           </NativeSelect>
         </FormControl>
       </div>
-      <button onClick={handleSubmit}>Finalizar compra</button>
+      <button className="button-finish" onClick={handleSubmit}>Finalizar compra</button>
     </form>
   );
 }

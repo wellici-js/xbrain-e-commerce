@@ -1,5 +1,4 @@
 import React, { FC, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 
 import {
   makeStyles,
@@ -66,7 +65,6 @@ const Products: FC = () => {
           ))
         }
       </Grid>
-      <Link to="/checkout">checkout</Link>
       <Footer />
     </div>
   );

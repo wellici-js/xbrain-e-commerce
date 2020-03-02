@@ -1,3 +1,13 @@
 footer {
-  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+h3 {
+  color: #546e7a;
 }

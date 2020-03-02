@@ -47,10 +47,15 @@ const CardComponent: FC<Product> = ({ name, url, price, in_cash_percent, deadlin
   const inCash = useMemo(() =>
     price - (price * (in_cash_percent / 100.0)),
     [price, in_cash_percent]);
+  const parcel = useMemo(() => (price/12).toFixed(2), [price]);
 
   return (
     <Card className={classes.root}
       onClick={() => {
+        dispatch(clickProduct(id))
+        setClicked(!clicked)
+      }}
+      onMouseMove={() => {
         dispatch(clickProduct(id))
         setClicked(!clicked)
       }}
@@ -67,7 +72,7 @@ const CardComponent: FC<Product> = ({ name, url, price, in_cash_percent, deadlin
             {name}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            Em até 12x de R$100
+            Em até 12x de R$ { parcel }
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
             R$ {inCash} à vista (10% de desconto)

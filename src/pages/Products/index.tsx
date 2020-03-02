@@ -1,12 +1,13 @@
 import React, { FC, useState, useEffect } from 'react';
-
 import {
   makeStyles,
   createStyles,
   Theme,
   Grid,
 } from '@material-ui/core';
+import { useDispatch } from 'react-redux';
 
+import { clickProduct } from '../../store/actions';
 import data from '../../assets/db/db.json';
 import Footer from '../../components/Footer';
 import Card from '../../components/Card';
@@ -37,13 +38,18 @@ const useStyles = makeStyles((theme: Theme) =>
 const Products: FC = () => {
   const [products, setProducts] = useState<Array<Product>>();
   const classes = useStyles();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setProducts(data.products);
   }, []);
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root}
+      onClick={() => {
+        dispatch(clickProduct(0));
+      }}
+    >
       <h1>Products</h1>
       <Grid container spacing={2}>
         {

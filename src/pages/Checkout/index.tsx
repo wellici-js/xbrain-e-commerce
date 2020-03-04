@@ -13,13 +13,13 @@ const Checkout: FC = () => {
   const state: any = useSelector<Store>(state => state);
   const dispatch = useDispatch();
   const total = useMemo(() => state.product
-    .cart.map((product: any) => product.price).reduce((prev: any, value: any) => prev + value, 0),[state.product.cart.length]);
+    .cart.map((product: any) => product.price).reduce((prev: any, value: any) => prev + value, 0), [state.product.cart]);
 
   return (
     <div className="card">
       <h2>{state?.user?.name},</h2>
       <p>Sua compora no valor
-        <strong>R$ { total }</strong>
+        <strong>R$ {total}</strong>
         foi finalizada com sucesso
       </p>
       <img src={image} alt="checkout " />

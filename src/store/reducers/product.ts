@@ -35,6 +35,11 @@ const addProduct = (state = INITIAL_STATE, action: Action) => {
         ...state,
         isClicked: action.payload.id
       }
+    case 'RESET_CART':
+      return {
+        ...state,
+        cart: []
+      }
     default:
       return state;
   }

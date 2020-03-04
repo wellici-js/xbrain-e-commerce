@@ -27,3 +27,7 @@ export const clickProduct = (id: number) => ({
     id
   }
 })
+
+export const resetCart = () => ({
+  type: 'RESET_CART'
+})

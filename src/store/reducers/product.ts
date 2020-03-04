@@ -6,7 +6,13 @@ interface Action {
   payload: Product; 
 }
 
-const INITIAL_STATE = {
+interface State {
+  cart: Product[];
+  total_buy: number;
+  isClicked: any;
+}
+
+const INITIAL_STATE: State = {
   cart: [],
   total_buy: 0,
   isClicked: null
@@ -39,6 +45,11 @@ const addProduct = (state = INITIAL_STATE, action: Action) => {
       return {
         ...state,
         cart: []
+      }
+    case 'CALC_TOTAL':
+      return {
+        ...state,
+        total_buy: state.cart.map(item => item.price).reduce((prev, current) => prev + current, 0)
       }
     default:
       return state;

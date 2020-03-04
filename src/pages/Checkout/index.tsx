@@ -1,4 +1,4 @@
-import React, { FC, useMemo } from 'react';
+import React, { FC } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -12,14 +12,12 @@ const Checkout: FC = () => {
   const history = useHistory();
   const state: any = useSelector<Store>(state => state);
   const dispatch = useDispatch();
-  const total = useMemo(() => state.product
-    .cart.map((product: any) => product.price).reduce((prev: any, value: any) => prev + value, 0), [state.product.cart]);
 
   return (
     <div className="card">
       <h2>{state?.user?.name},</h2>
       <p>Sua compora no valor
-        <strong>R$ {total}</strong>
+        <strong>R$ {state.product.total_buy}</strong>
         foi finalizada com sucesso
       </p>
       <img src={image} alt="checkout " />

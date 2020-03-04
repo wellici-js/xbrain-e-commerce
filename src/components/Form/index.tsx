@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addUser } from '../../store/actions';
 import {
   withStyles,
@@ -67,6 +67,7 @@ const Form: FC = () => {
   const [sexo, setSexo] = useState("");
   const dispatch = useDispatch();
   const history = useHistory();
+  const state: any = useSelector(state => state);
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
@@ -108,7 +109,10 @@ const Form: FC = () => {
           </NativeSelect>
         </FormControl>
       </div>
-      <button className="button-finish" onClick={handleSubmit}>Finalizar compra</button>
+      <div className="total">
+        <h2>Total: R$ {state.product.total_buy}</h2>
+        <button className="button-finish" onClick={handleSubmit}>Finalizar compra</button>
+      </div>
     </form>
   );
 }

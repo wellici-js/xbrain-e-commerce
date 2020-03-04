@@ -51,7 +51,7 @@ const Products: FC = () => {
         dispatch(clickProduct(0));
       }}
     >
-      <h1>Products</h1>
+      <h1>Produtos</h1>
       <Divider component="h1" />
       <Grid container spacing={2}>
         {

@@ -12,7 +12,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Product, Store } from '../../models';
-import { addProduct, removeProduct, clickProduct } from '../../store/actions';
+import { addProduct, removeProduct, clickProduct, calcTotal } from '../../store/actions';
 
 import useStyles from './styles';
 
@@ -24,7 +24,7 @@ const CardComponent: FC<Product> = ({ name, url, price, in_cash_percent, deadlin
   const inCash = useMemo(() =>
     price - (price * (in_cash_percent / 100.0)),
     [price, in_cash_percent]);
-  const parcel = useMemo(() => (price/12).toFixed(2), [price]);
+  const parcel = useMemo(() => (price / 12).toFixed(2), [price]);
 
   return (
     <Card className={classes.root}
@@ -49,7 +49,7 @@ const CardComponent: FC<Product> = ({ name, url, price, in_cash_percent, deadlin
             {name}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            Em até 12x de R$ { parcel }
+            Em até 12x de R$ {parcel}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
             R$ {inCash} à vista (10% de desconto)
@@ -69,10 +69,11 @@ const CardComponent: FC<Product> = ({ name, url, price, in_cash_percent, deadlin
                   in_cash_percent,
                   url
                 }));
+                dispatch(calcTotal());
               }}
             >
-              <Icon style={{ color: "#546e7a"}}>add_circle</Icon>
-        </Button>
+              <Icon style={{ color: "#546e7a" }}>add_circle</Icon>
+            </Button>
 
             <Typography className={classes.add}>
               ADICIONAR
@@ -81,10 +82,11 @@ const CardComponent: FC<Product> = ({ name, url, price, in_cash_percent, deadlin
             <Button size="small" color="primary"
               onClick={() => {
                 dispatch(removeProduct(id));
+                dispatch(calcTotal());
               }}
             >
-              <Icon style={{ color: "#546e7a"}}>remove_circle</Icon>
-        </Button>
+              <Icon style={{ color: "#546e7a" }}>remove_circle</Icon>
+            </Button>
           </CardActions>
         ) : null
       }

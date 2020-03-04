@@ -31,3 +31,7 @@ export const clickProduct = (id: number) => ({
 export const resetCart = () => ({
   type: 'RESET_CART'
 })
+
+export const calcTotal = () => ({
+  type: 'CALC_TOTAL'
+})
